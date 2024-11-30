@@ -75,7 +75,7 @@ plantilla/
 
 1. **Clona el repositorio:**
 ```bash
-git clone https://github.com/tuusuario/portfolio-template.git
+git clone https://github.com/Davidcrz14/plantilla.git
 ```
 
 2. **Instala las dependencias:**
