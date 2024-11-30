@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Personal | Plantilla DavC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Hover.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- Magic Effects -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.min.css">
+    <!-- CSS Glitch -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/css-glitch@2.0.0/css/css-glitch.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="servicios.png" as="image">
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.js" as="script">
+</head>
+
+<body class="bg-slate-900 text-gray-100">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('ServiceWorker registered'))
+                    .catch(err => console.log('ServiceWorker registration failed:', err));
+            });
+        }
+    </script>
+    <!-- Header/Navegación -->
+    <nav class="bg-slate-900/80 backdrop-blur-md shadow-lg fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <img src="servicios.png" alt="Logo" class="h-12 w-auto mr-4">
+                        <span class="text-2xl font-bold text-white">DavC</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link relative group">
+                        <span>Inicio</span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#proyectos" class="nav-link relative group">
+                        <span>Proyectos</span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#habilidades" class="nav-link relative group">
+                        <span>Habilidades</span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#experiencia" class="nav-link relative group">
+                        <span>Experiencia</span>
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contacto" class="btn-primary">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Contacto
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-300 hover:text-white focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden bg-slate-900/95 py-2 px-4 space-y-2 hidden" id="mobile-menu">
+            <a href="#inicio" class="block py-2 px-4 text-white hover:bg-indigo-500 rounded">Inicio</a>
+            <a href="#proyectos" class="block py-2 px-4 text-white hover:bg-indigo-500 rounded">Proyectos</a>
+            <a href="#habilidades" class="block py-2 px-4 text-white hover:bg-indigo-500 rounded">Habilidades</a>
+            <a href="#experiencia" class="block py-2 px-4 text-white hover:bg-indigo-500 rounded">Experiencia</a>
+            <a href="#contacto" class="block py-2 px-4 text-white bg-indigo-600 rounded">Contacto</a>
+        </div>
+    </nav>
+    <!-- Añadir después del nav y antes del hero section -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50">
+        <div id="scroll-progress" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 transform origin-left">
+        </div>
+    </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-20 bg-gradient-vibrant section-asymmetric">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 font-heading leading-tight">
+                        <span class="text-indigo-100">Hola, soy</span><br>
+                        <span class="gradient-text">DavC</span>
+                    </h1>
+                    <p class="text-xl text-white/90 mb-8">
+                        Aca puede ir una descripcion de la persona, etc etc
+                    </p>
+                    <div class="flex gap-4 items-center">
+                        <a href="#proyectos" class="btn-primary group">
+                            Ver Proyectos
+                            <i class="fas fa-code ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contacto" class="btn-secondary">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Contactar
+                        </a>
+                    </div>
+                    <div class="flex gap-4 mt-8">
+                        <a href="https://github.com/tuusuario" class="text-white/80 hover:text-white transition-colors">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/tuusuario"
+                            class="text-white/80 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="https://twitter.com/tuusuario"
+                            class="text-white/80 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative">
+                        <div
+                            class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-indigo-500/20 p-2 animate__animated animate__flip glitch">
+                            <img src="https://w.wallhaven.cc/full/x6/wallhaven-x6ql5v.jpg" alt="Tu Nombre"
+                                class="w-full h-full object-cover rounded-full glitch__img">
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -right-4 bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-slate-700/50">
+                            <p class="text-sm font-medium">
+                                <i class="fas fa-code text-indigo-400 mr-2"></i>
+                                Disponible para proyectos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section id="habilidades" class="py-16 bg-dark-gradient relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Habilidades Principales</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="stat-card" data-aos="zoom-in">
+                    <i class="fas fa-laptop-code text-4xl text-indigo-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Frontend</h3>
+                    <p class="text-gray-400">React, Vue, TypeScript</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in">
+                    <i class="fas fa-server text-4xl text-indigo-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Backend</h3>
+                    <p class="text-gray-400">Node.js, Python, SQL</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in">
+                    <i class="fas fa-mobile-alt text-4xl text-indigo-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Mobile</h3>
+                    <p class="text-gray-400">React Native, Flutter</p>
+                </div>
+                <div class="stat-card" data-aos="zoom-in">
+                    <i class="fas fa-cloud text-4xl text-indigo-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">DevOps</h3>
+                    <p class="text-gray-400">AWS, Docker, CI/CD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="proyectos" class="py-20 bg-dark-gradient-alt relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-100 mb-4">Proyectos Destacados</h2>
+                <p class="text-xl text-gray-300">Una muestra de mi trabajo reciente</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="service-card group" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <div class="relative overflow-hidden rounded-t-2xl">
+                        <img src="https://w.wallhaven.cc/full/d6/wallhaven-d61ggo.jpg" alt="Proyecto 1"
+                            class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300">React</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-300">Node.js</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Nombre del Proyecto</h3>
+                        <p class="text-gray-300 mb-4">
+                            Descripción detallada del proyecto y las tecnologías utilizadas.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>
+                                Código
+                            </a>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card group" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <div class="relative overflow-hidden rounded-t-2xl">
+                        <img src="https://w.wallhaven.cc/full/ex/wallhaven-ex9gwo.png" alt="Proyecto 2"
+                            class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300">React</span>
+                            <span class="px-3 py-1 text-xs rounded-full bg-green-500/20 text-green-300">Node.js</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Nombre del Proyecto</h3>
+                        <p class="text-gray-300 mb-4">
+                            Descripción detallada del proyecto y las tecnologías utilizadas.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                                <i class="fab fa-github mr-2"></i>
+                                Código
+                            </a>
+                            <a href="#" class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experiencia Section -->
+    <section id="experiencia" class="py-20 bg-dark-gradient relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16">Experiencia</h2>
+            <div class="grid grid-cols-1 gap-12 relative">
+                <!-- Experiencia 1 - Izquierda -->
+                <div class="flex justify-end md:pr-16 relative group" data-aos="fade-right">
+                    <div class="w-full md:w-1/2">
+                        <div class="experience-card relative">
+                            <!-- Punto decorativo -->
+                            <div class="absolute -left-3 top-0 w-2 h-full bg-indigo-500/50 rounded-full"></div>
+                            <div class="mb-2 text-indigo-400">2022 - Presente</div>
+                            <h3 class="text-xl font-bold">Desarrollador Senior</h3>
+                            <p class="text-gray-400">Empresa XYZ</p>
+                            <p class="text-gray-300 mt-4">
+                                Descripción detallada de responsabilidades y logros en el puesto.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experiencia 2 - Derecha -->
+                <div class="flex justify-start md:pl-16 relative group" data-aos="fade-left">
+                    <div class="w-full md:w-1/2">
+                        <div class="experience-card relative">
+                            <!-- Punto decorativo -->
+                            <div class="absolute -left-3 top-0 w-2 h-full bg-indigo-500/50 rounded-full"></div>
+                            <div class="mb-2 text-indigo-400">2020 - 2022</div>
+                            <h3 class="text-xl font-bold">Desarrollador Full Stack</h3>
+                            <p class="text-gray-400">Empresa ABC</p>
+                            <p class="text-gray-300 mt-4">
+                                Desarrollo de aplicaciones web escalables y mantenimiento de sistemas existentes.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section id="contacto" class="py-20 bg-gradient-to-r from-indigo-600/90 to-emerald-500/90 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">¿Listo para comenzar?</h2>
+                <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                    Que esperas contactamen uwu
+                </p>
+                <a href="#" class="btn-white group">
+                    Contactar Ahora
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full filter blur-2xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full filter blur-2xl"></div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-col">
+                    <h4 class="font-heading text-white text-lg mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-indigo-400 transition-colors">Desarrollo Web</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition-colors">Marketing Digital</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition-colors">Diseño UI/UX</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="font-heading text-white text-lg mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> info@empresa.com</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2"></i> +34 900 123 456</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> PeruKistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2024 Powered by DavC ❤️</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Configuración optimizada de AOS
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out',
+            once: true, // Cargar animaciones solo una vez
+            offset: 100,
+            disable: window.innerWidth < 768, // Deshabilitar en móviles
+            throttleDelay: 99,
+            mirror: false
+        });
+
+        // Desactivar AOS en scroll
+        let scrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!scrolling) {
+                scrolling = true;
+                AOS.refresh();
+                setTimeout(() => {
+                    scrolling = false;
+                }, 100);
+            }
+        }, { passive: true });
+    </script>
+    <script>
+        // Optimizar la carga de imágenes
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+                img.decoding = 'async';
+            });
+        });
+    </script>
+    <div id="particles-js" class="fixed inset-0 pointer-events-none"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles-config.json');
+    </script>
+    <script>
+        // Añadir clases de animate.css dinámicamente
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.classList.add('animate__animated', 'animate__fadeInUp');
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.glitch').forEach(el => {
+            el.addEventListener('mouseover', function () {
+                this.classList.add('glitch--active');
+            });
+
+            el.addEventListener('mouseout', function () {
+                this.classList.remove('glitch--active');
+            });
+        });
+    </script>
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                } else if (!document.querySelector('[data-aos-once="true"]')) {
+                    entry.target.classList.remove('aos-animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos con animaciones
+        document.querySelectorAll('[data-aos]').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+    <!-- Easter Egg: Konami Code -->
+    <div id="easter-egg" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center">
+        <div class="text-center">
+            <h3 class="text-4xl font-bold text-white mb-4">¡Easter Egg Encontrado! 🎮</h3>
+            <p class="text-gray-300">Has descubierto el código secreto</p>
+            <button id="close-easter-egg" class="mt-8 btn-primary">Cerrar</button>
+        </div>
+    </div>
+    <script>
+        // Indicador de scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Cambio de tema
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        root.setAttribute('data-theme', savedTheme);
+
+        // Easter Egg: Konami Code
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    activateEasterEgg();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        function activateEasterEgg() {
+            const easterEgg = document.getElementById('easter-egg');
+            easterEgg.classList.remove('hidden');
+            createMatrixRain();
+        }
+
+        document.getElementById('close-easter-egg').addEventListener('click', () => {
+            document.getElementById('easter-egg').classList.add('hidden');
+            stopMatrixRain();
+        });
+
+        // Matrix Rain Effect
+        let matrixInterval;
+        function createMatrixRain() {
+            matrixInterval = setInterval(() => {
+                const character = document.createElement('div');
+                character.className = 'matrix-character';
+                character.style.left = Math.random() * 100 + 'vw';
+                character.textContent = String.fromCharCode(0x30A0 + Math.random() * 96);
+                document.body.appendChild(character);
+
+                setTimeout(() => character.remove(), 2000);
+            }, 50);
+        }
+
+        function stopMatrixRain() {
+            clearInterval(matrixInterval);
+            document.querySelectorAll('.matrix-character').forEach(el => el.remove());
+        }
+    </script>
+    <script>
+        // Smooth scrolling para los enlaces del navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

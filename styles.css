@@ -1,0 +1,534 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-link {
+        @apply text-gray-300 hover:text-white font-medium transition-colors duration-300;
+    }
+
+    .nav-link span:last-child {
+        @apply absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300;
+    }
+
+    .nav-link:hover span:last-child {
+        @apply w-full;
+    }
+
+    .btn-primary {
+        @apply bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1 inline-flex items-center;
+    }
+
+    .btn-secondary {
+        @apply bg-white/10 backdrop-blur-md text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-white/20 hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center border border-white/20;
+    }
+
+    .btn-white {
+        @apply bg-white text-indigo-600 font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 inline-flex items-center;
+    }
+
+    .service-card {
+        @apply bg-slate-800/90 backdrop-blur-sm rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl overflow-hidden border border-slate-700/50;
+    }
+
+    .stat-card {
+        @apply p-6 rounded-2xl bg-slate-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl
+        transition-all duration-500 transform hover:-translate-y-2 border border-slate-700/50
+        hover:border-indigo-500/30;
+        animation: floating 3s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    .stat-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .stat-card:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    .stat-card:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
+    .counter {
+        @apply text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-500 block mb-2;
+    }
+
+    .testimonial-card {
+        @apply bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-slate-700/50 relative overflow-hidden;
+    }
+
+    .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(255,255,255,0) 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .testimonial-card:hover::before {
+        opacity: 1;
+    }
+
+    .tech-icon {
+        @apply flex flex-col items-center justify-center p-6 bg-slate-800/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 min-w-[120px] border border-slate-700/50;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .tech-icon:nth-child(even) {
+        animation-delay: 1s;
+    }
+
+    .tech-label {
+        @apply mt-2 text-sm font-medium text-gray-300;
+    }
+
+    .experience-card {
+        @apply bg-slate-800/90 backdrop-blur-sm p-6 pl-8 rounded-xl border border-slate-700/50
+        transition-all duration-300 hover:border-indigo-500/30 relative;
+    }
+
+    .experience-card:hover {
+        @apply transform -translate-y-1 shadow-lg shadow-indigo-500/10;
+    }
+
+    .skill-tag {
+        @apply px-3 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300
+        transition-colors hover:bg-indigo-500/20 hover:text-indigo-300;
+    }
+
+    .social-link {
+        @apply text-white/80 hover:text-indigo-400 transition-colors;
+    }
+}
+
+/* Variables */
+:root {
+    --primary-color: theme('colors.indigo.600');
+    --secondary-color: theme('colors.emerald.500');
+    --accent-color: theme('colors.yellow.400');
+    --bg-primary: theme('colors.slate.900');
+    --bg-secondary: theme('colors.slate.800');
+    --bg-card: theme('colors.slate.800/90');
+    --text-primary: theme('colors.gray.100');
+    --text-secondary: theme('colors.gray.300');
+}
+
+/* Utilidades generales */
+.font-heading {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Gradientes y fondos */
+.bg-gradient-vibrant {
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    position: relative;
+}
+
+.bg-gradient-vibrant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(79, 70, 229, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%);
+    z-index: 1;
+}
+
+.bg-gradient-vibrant > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Animaciones personalizadas */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}
+
+/* Efectos hover mejorados */
+.service-card:hover img {
+    transform: scale(1.1);
+}
+
+.stat-card:hover .counter {
+    animation: pulse 2s infinite;
+}
+
+/* Efectos de scroll */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efectos de fondo */
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .stat-card {
+        @apply p-4;
+    }
+
+    .counter {
+        @apply text-3xl;
+    }
+}
+
+/* Soporte para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .bg-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+}
+
+/* Nuevos estilos para mejorar el diseño */
+.gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300 font-extrabold;
+}
+
+/* Nuevas animaciones */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Efecto de parallax para elementos decorativos */
+.parallax {
+    transform: translateY(calc(var(--scroll-y) * 0.5));
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mejoras para el footer */
+.footer-col ul li {
+    @apply text-gray-400 text-sm;
+}
+
+/* Añadir efecto de hover mejorado para los botones */
+.btn-primary:hover {
+    @apply shadow-lg shadow-indigo-500/30;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Añadir clases de fondo personalizadas */
+.bg-dark-gradient {
+    @apply bg-gradient-to-b from-slate-900 to-slate-800;
+}
+
+.bg-dark-gradient-alt {
+    @apply bg-gradient-to-b from-slate-800 to-slate-900;
+}
+
+/* Mejorar las animaciones */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400
+    animate-gradient-shift bg-size-200;
+    animation: gradient-shift 4s ease infinite;
+}
+
+/* Mejorar los efectos hover */
+.project-card:hover .project-overlay {
+    @apply opacity-100;
+}
+
+.project-overlay {
+    @apply absolute inset-0 bg-slate-900/80 opacity-0 transition-opacity duration-300
+    flex items-center justify-center;
+}
+
+/* Añadir nuevas animaciones */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.2); }
+}
+
+.floating-card {
+    animation: floating 6s ease-in-out infinite;
+}
+
+.glow-effect {
+    animation: glowing 3s infinite;
+}
+
+/* Mejorar el rendimiento del scroll */
+.aos-animate {
+    will-change: transform, opacity;
+}
+
+/* Optimizar las animaciones */
+.service-card, .experience-card, .stat-card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Reducir la complejidad de las animaciones */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Mejorar el rendimiento de las transiciones */
+.service-card {
+    @apply transition-all duration-300;
+    transition-property: transform, box-shadow;
+}
+
+/* Optimizar el efecto parallax */
+.parallax {
+    transform: translate3d(0, calc(var(--scroll-y) * 0.5), 0);
+    backface-visibility: hidden;
+}
+
+/* Añadir soporte para reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .experience-card,
+    .stat-card {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Indicador de Scroll */
+#scroll-progress {
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Línea de tiempo */
+.timeline-container {
+    @apply relative py-10;
+}
+
+.timeline-item {
+    @apply flex justify-center mb-16 relative;
+}
+
+.timeline-item.right {
+    @apply flex-row-reverse;
+}
+
+.timeline-content {
+    @apply w-1/2 px-8 relative;
+}
+
+.timeline-dot {
+    @apply absolute w-4 h-4 rounded-full bg-indigo-500 left-1/2 top-0
+    transform -translate-x-1/2 z-10 transition-transform duration-300
+    hover:scale-150 hover:bg-indigo-400;
+}
+
+.timeline-date {
+    @apply text-indigo-400 font-medium mb-2;
+}
+
+.timeline-card {
+    @apply bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50
+    transition-all duration-300 hover:border-indigo-500/30;
+}
+
+/* Tema claro/oscuro */
+:root {
+    --bg-primary: theme('colors.slate.900');
+    --text-primary: theme('colors.gray.100');
+}
+
+:root[data-theme="light"] {
+    --bg-primary: theme('colors.gray.100');
+    --text-primary: theme('colors.slate.900');
+}
+
+/* Clases para el tema claro */
+.light {
+    @apply bg-gray-100;
+}
+
+.light .nav-link {
+    @apply text-slate-700 hover:text-indigo-600;
+}
+
+.light .service-card,
+.light .timeline-card,
+.light .stat-card {
+    @apply bg-white/90 border-gray-200/50;
+}
+
+/* Easter Egg Animation */
+@keyframes matrix-rain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.matrix-character {
+    @apply fixed text-green-500 text-xl font-mono;
+    animation: matrix-rain 2s linear infinite;
+}
+
+/* Actualizar los estilos de la experiencia */
+.experience-card {
+    @apply bg-slate-800/90 backdrop-blur-sm p-6 pl-8 rounded-xl border border-slate-700/50
+    transition-all duration-300 hover:border-indigo-500/30 relative;
+}
+
+.experience-card:hover {
+    @apply transform -translate-y-1 shadow-lg shadow-indigo-500/10;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .experience-card {
+        @apply ml-0 pl-6;
+    }
+
+    .flex.justify-end.md\:pr-16,
+    .flex.justify-start.md\:pl-16 {
+        @apply justify-start p-0;
+    }
+
+    .w-full.md\:w-1\/2 {
+        @apply w-full;
+    }
+}
+
+/* Optimizaciones de rendimiento */
+.disable-animations * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+}
+
+/* Optimizar renderizado */
+.service-card,
+.experience-card,
+.stat-card {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Reducir repaints */
+.parallax,
+.floating-card {
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimizar imágenes con blur placeholder */
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    filter: blur(10px);
+    transform: scale(1.1);
+    transition: opacity 0.3s ease;
+}
+
+.image-loaded {
+    opacity: 0;
+}
+
+/* Optimizaciones de rendimiento */
+.disable-animations * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+}
+
+/* Forzar aceleración por hardware */
+.nav-link,
+.service-card,
+.experience-card,
+.stat-card,
+.parallax,
+.floating-card {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Reducir repaints */
+body {
+    overflow-x: hidden;
+}
+
+/* Optimizar animaciones */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Mejorar rendimiento de scroll */
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+/* Optimizar renderizado de elementos fijos */
+.fixed {
+    transform: translateZ(0);
+    will-change: transform;
+}
