@@ -3,16 +3,14 @@
 Una plantilla moderna y elegante para portfolio personal de desarrollador, con diseño responsivo, animaciones suaves y alto rendimiento.
 
 ## 🌟 Demo
-[Ver Demo](https://tu-demo-url.com)
+[Ver Demo](https://plantilla-ruby.vercel.app/)
 
 ## ✨ Características
 
 - 🎨 Diseño moderno y minimalista
 - 📱 Totalmente responsivo
-- 🌙 Modo oscuro/claro
 - ⚡ Optimizado para rendimiento
 - 🔄 Animaciones suaves
-- 🎮 Easter egg incluido (Código Konami)
 - 🔍 SEO optimizado
 - 🖼️ Efectos de parallax
 - 📊 Barra de progreso de scroll
@@ -77,7 +75,7 @@ plantilla/
 
 1. **Clona el repositorio:**
 ```bash
-git clone https://github.com/tuusuario/portfolio-template.git
+git clone https://github.com/Davidcrz14/plantilla.git
 ```
 
 2. **Instala las dependencias:**
