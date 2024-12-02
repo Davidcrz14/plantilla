@@ -32,11 +32,35 @@
     }
 
     .stat-card {
-        @apply p-6 rounded-2xl bg-slate-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl
+        @apply p-8 rounded-2xl bg-slate-800/80 backdrop-blur-sm shadow-lg
         transition-all duration-500 transform hover:-translate-y-2 border border-slate-700/50
-        hover:border-indigo-500/30;
+        hover:border-indigo-500/30 relative overflow-hidden mx-8;
         animation: floating 3s ease-in-out;
         animation-fill-mode: forwards;
+    }
+
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 250%;
+        height: 250%;
+        background: radial-gradient(
+            circle,
+            rgba(99, 102, 241, 0.1) 0%,
+            rgba(99, 102, 241, 0.05) 20%,
+            transparent 60%
+        );
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.6s ease-out;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .stat-card:hover::after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
     }
 
     .stat-card:nth-child(2) {
@@ -88,22 +112,58 @@
         @apply mt-2 text-sm font-medium text-gray-300;
     }
 
+    /* Actualizar los estilos de experiencia */
     .experience-card {
-        @apply bg-slate-800/90 backdrop-blur-sm p-6 pl-8 rounded-xl border border-slate-700/50
-        transition-all duration-300 hover:border-indigo-500/30 relative;
+        @apply bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50
+        transition-all duration-300 hover:border-indigo-500/30 relative
+        hover:bg-slate-800/95 hover:shadow-lg hover:shadow-indigo-500/10;
     }
 
-    .experience-card:hover {
-        @apply transform -translate-y-1 shadow-lg shadow-indigo-500/10;
+    .experience-card::before {
+        content: '';
+        @apply absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-emerald-500/5
+        opacity-0 transition-opacity duration-300 rounded-xl;
+    }
+
+    .experience-card:hover::before {
+        @apply opacity-100;
+    }
+
+    .experience-card:hover .timeline-dot {
+        @apply scale-150;
+    }
+
+    .timeline-dot {
+        @apply absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full hidden md:block
+        transition-transform duration-300 transform origin-center;
+    }
+
+    .timeline-dot.indigo {
+        @apply bg-indigo-500 -right-4;
+    }
+
+    .timeline-dot.emerald {
+        @apply bg-emerald-500 -left-4;
     }
 
     .skill-tag {
         @apply px-3 py-1 text-xs rounded-full bg-slate-700/50 text-gray-300
-        transition-colors hover:bg-indigo-500/20 hover:text-indigo-300;
+        transition-all duration-300 hover:bg-indigo-500/20 hover:text-indigo-300
+        cursor-default transform hover:-translate-y-1;
     }
 
     .social-link {
         @apply text-white/80 hover:text-indigo-400 transition-colors;
+    }
+
+    /* Mejorar el efecto de luz al hover */
+    .stat-card i {
+        @apply transition-all duration-300;
+        filter: drop-shadow(0 0 0 rgba(99, 102, 241, 0));
+    }
+
+    .stat-card:hover i {
+        filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.3));
     }
 }
 
@@ -205,6 +265,18 @@
 
     .counter {
         @apply text-3xl;
+    }
+
+    .experience-card {
+        @apply ml-0 pl-6;
+    }
+
+    .experience-card::before {
+        @apply hidden;
+    }
+
+    .skill-tag {
+        @apply text-xs px-2;
     }
 }
 
@@ -373,6 +445,7 @@
     @apply absolute w-4 h-4 rounded-full bg-indigo-500 left-1/2 top-0
     transform -translate-x-1/2 z-10 transition-transform duration-300
     hover:scale-150 hover:bg-indigo-400;
+    animation: timeline-pulse 2s ease-in-out infinite;
 }
 
 .timeline-date {
@@ -421,30 +494,14 @@
     animation: matrix-rain 2s linear infinite;
 }
 
-/* Actualizar los estilos de la experiencia */
-.experience-card {
-    @apply bg-slate-800/90 backdrop-blur-sm p-6 pl-8 rounded-xl border border-slate-700/50
-    transition-all duration-300 hover:border-indigo-500/30 relative;
+/* Animación para la línea de tiempo */
+@keyframes timeline-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
-.experience-card:hover {
-    @apply transform -translate-y-1 shadow-lg shadow-indigo-500/10;
-}
-
-/* Responsive para móviles */
-@media (max-width: 768px) {
-    .experience-card {
-        @apply ml-0 pl-6;
-    }
-
-    .flex.justify-end.md\:pr-16,
-    .flex.justify-start.md\:pl-16 {
-        @apply justify-start p-0;
-    }
-
-    .w-full.md\:w-1\/2 {
-        @apply w-full;
-    }
+.timeline-dot {
+    animation: timeline-pulse 2s ease-in-out infinite;
 }
 
 /* Optimizaciones de rendimiento */
@@ -531,4 +588,11 @@ html {
 .fixed {
     transform: translateZ(0);
     will-change: transform;
+}
+
+/* Aumentar el espacio entre las tarjetas */
+@media (min-width: 768px) {
+    .grid.md\:grid-cols-2.lg\:grid-cols-4 {
+        @apply gap-16 px-12;
+    }
 }

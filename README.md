@@ -149,7 +149,19 @@ Licencia de DavC
 - Iconos por Font Awesome
 - Fuentes por Google Fonts
 
-## 📞 Contacto
-
 ---
 ⭐ ¡No olvides dar una estrella si te gustó el proyecto!
+
+## 📝 Derechos de Uso
+
+Por la presente, cedo los derechos de uso de esta plantilla bajo las siguientes condiciones:
+
+1. Puedes utilizar, modificar y distribuir esta plantilla libremente
+2. Puedes usarla en proyectos personales o comerciales
+3. No es necesario atribuir el diseño original
+
+**Único requisito:** Mantener la atribución `© 2024 Powered by DavC con ❤️` en el footer de la página web.
+
+Esta cesión de derechos busca que la plantilla sea de utilidad para la comunidad, manteniendo un pequeño reconocimiento al trabajo original.
+
+
